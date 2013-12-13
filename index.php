@@ -4,7 +4,7 @@
 	
 	if(isset($_GET['page'])) {
 		// Array met alle pagina's
-		$pages=array("products", "cart");
+		$pages=array("home", "products", "cart");
 		
 		if(in_array($_GET['page'], $pages)) {
 			// Pagina gevonden in array, ga naar pagina
@@ -12,13 +12,13 @@
 		
 		} else {
 			// Pagina niet in array, ga naar default
-			$page="products";
+			$page="home";
 		
 		}
 	
 	} else {
 		// Geen pagina variabele gevonden, ga naar default
-		$page="products";
+		$page="home";
 		
 	}
 ?>
@@ -26,13 +26,13 @@
 <head>
 	<title>Webshop</title>
 	
-	<link href="./style.css" rel="stylesheet" type="text/css">
+	<link href="./styles/style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
 <div class="header">
 	
-	<?php require("header.php"); ?>
+	<?php require("view/header.php"); ?>
 	
 </div>
 
