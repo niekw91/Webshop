@@ -15,7 +15,7 @@ a {
     top: 0;
     padding: 0;
     width: 100%;
-    min-width: 1080px;
+    min-width: 1020px;
     height: 80px;
     background-color: #4A708B;
     border-bottom: #008080;
@@ -24,7 +24,7 @@ a {
 
 .main {
     position: relative;
-    width: 1060px;
+    width: 1020px;
     min-height: 600px;
     margin: auto auto;
     margin-top: 0;
@@ -36,7 +36,7 @@ a {
 
 .footer {
     position: relative;
-    width: 1060px;
+    width: 1020px;
     min-width: 600px;
     color: #ffffff;
 	margin: auto auto;

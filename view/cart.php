@@ -14,7 +14,7 @@
 
 ?>
 
-<form method="post" action="template.php?page=cart">
+<form method="post" action="index.php?page=cart">
 	<table class="items">
 		<tr>
 			<th>Naam</th>
