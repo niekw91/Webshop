@@ -2,14 +2,14 @@
 <html>
 
 <head>
-	<link href="view/header.css" rel="stylesheet" type="text/css" />
+	<link href="styles/header.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
 
 <ul id="navmenu">
-	<li><a href="#">Home</a></li>
-	<li><a href="#">Producten</a><span class="darrow">&#9660;</span>
+	<li><a href="index.php?page=home">Home</a></li>
+	<li><a href="index.php?page=products">Producten</a><span class="darrow">&#9660;</span>
 		<ul class="sub1">
 			<li><a href="#">Besturingssystemen</a><span class="rarrow">&#9654;</span>
 				<ul class="sub2">

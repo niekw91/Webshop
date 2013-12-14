@@ -53,7 +53,7 @@
 				<td><?php echo $row['name'] ?></td>
 				<td><?php echo $row['category_id'] ?></td>
 				<td><?php echo $row['price'] ?></td>
-				<td><a href="index.php?page=producten&action=add&id=<?php echo $row['id'] ?>">Add to cart</td>
+				<td><a href="index.php?page=products&action=add&id=<?php echo $row['id'] ?>">Add to cart</a></td>
 			</tr>
 		
 		<?php
@@ -64,11 +64,16 @@
 	
 <div id="side">
 	<ul>
-		<li>Category 1</li>
-		<li>Category 2</li>
-		<li>Category 3</li>
-		<li>Category 4</li>
-		<li>Category 5</li>
+	<?php
+		$database = new DatabaseController();
+		$database->doSQL("SELECT * FROM category");
+		
+		while ($row = $database->getRecord()) {
+	?>
+		<li><a href="index.php?page=products&cat=<?php echo $row['name'] ?>"><?php echo $row['name'] ?></li>
+	<?php
+		}	
+	?>
 	</ul>
 </div>
 
