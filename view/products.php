@@ -68,13 +68,17 @@
 	
 		$row = DatabaseController::executeQuery("SELECT * FROM category WHERE parentcategory_id IS NULL");
 		foreach($row as $value) {
-			echo $value['name'];
+			echo "<li>";
+			echo "<a href='index.php?page=products&cat=".$value['name']."'>".$value['name']."</a>";
 			$subRow = DatabaseController::executeQuery("SELECT * FROM category WHERE parentcategory_id = ".$value['id']."");
 			if(!empty($subRow[0]['name'])) {
+				echo "<ul>";
 				foreach($subRow as $value) {
-					echo $value['name'];
+					echo "<li><a href='index.php?page=products&cat=".$value['name'].">".$value['name']."</a></li>";
 				}
+				echo "</ul>";
 			}
+			echo "</li>";
 		}
 		
 

@@ -3,12 +3,7 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 }
-li {
-   	list-style-type: none;
-}
-a {
-   	text-decoration: none;
-}
+
 .header {
 	position: relative;
     left: 0;
