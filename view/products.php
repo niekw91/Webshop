@@ -9,13 +9,11 @@
 		
 		} else {
 		
-			$database = new DatabaseController();
-			$database->doSQL("SELECT id, name, category_id, price FROM product
-							 WHERE id=($id)");
-			if($row_s = $database->getRecord()) {			
-				$_SESSION['cart'][$row_s['id']]=array(
+			$row_s = DatabaseController::executeQuery("SELECT id, name, category_id, price FROM product WHERE id=($id)");
+			if(!empty($row_s[0]['id'])) {			
+				$_SESSION['cart'][$row_s[0]['id']]=array(
 					"quantity" => 1,
-					"price" => $row_s['price']);
+					"price" => $row_s[0]['price']);
 				
 			} else {
 
@@ -43,21 +41,20 @@
 		
 		<?php
 		
-			$database = new DatabaseController();
-			$database->doSQL("SELECT id, name, category_id, price FROM product");
+			$row = DatabaseController::executeQuery("SELECT id, name, category_id, price FROM product");
 			
-			while ($row = $database->getRecord()) {
+			foreach ($row as $value) {
 			
 		?>
 			<tr>
-				<td><?php echo $row['name'] ?></td>
-				<td><?php echo $row['category_id'] ?></td>
-				<td><?php echo $row['price'] ?></td>
-				<td><a href="index.php?page=products&action=add&id=<?php echo $row['id'] ?>">Add to cart</a></td>
+				<td><?php echo $value['name'] ?></td>
+				<td><?php echo $value['category_id'] ?></td>
+				<td><?php echo $value['price'] ?></td>
+				<td><a href="index.php?page=products&action=add&id=<?php echo $value['id'] ?>">Add to cart</a></td>
 			</tr>
 		
 		<?php
-			}
+			} 
 		?>
 	</table>
 </div>
@@ -65,44 +62,27 @@
 <div id="side">
 	<ul>
 	<?php
-		$database = new DatabaseController();
-		$database->doSQL("SELECT * FROM category");
 		
-		while ($row = $database->getRecord()) {
-	?>
-		<li><a href="index.php?page=products&cat=<?php echo $row['name'] ?>"><?php echo $row['name'] ?></li>
-	<?php
-		}	
+	
+	
+	
+		$row = DatabaseController::executeQuery("SELECT * FROM category WHERE parentcategory_id IS NULL");
+		foreach($row as $value) {
+			echo $value['name'];
+			$subRow = DatabaseController::executeQuery("SELECT * FROM category WHERE parentcategory_id = ".$value['id']."");
+			if(!empty($subRow[0]['name'])) {
+				foreach($subRow as $value) {
+					echo $value['name'];
+				}
+			}
+		}
+		
+
+		
+		//while ($row = $database->getRecord()) {
+			//echo "<li><a href='index.php?page=products&cat=".$row['name']."'>".$row['name']."</li>";
+		//}	
 	?>
 	</ul>
 </div>
 
-<div id="cart">
-	<h1>Winkelwagen</h1>
-	<?php 
-	
-	if(isset($_SESSION['cart'])) {
-	
-			// Maak sql string met product id's die in de session cart zitten
-			$sql="SELECT id, name FROM product WHERE id IN (";
-			foreach($_SESSION['cart'] as $id => $value) {
-				$sql.=$id.",";
-			}
-			$sql=substr($sql, 0, -1).")";
-			// Maak database controller en stuur query
-			$database = new DatabaseController();
-			$database->doSQL($sql);
-			while($row = $database->getRecord()) {
-			?>
-				<p><?php echo $row['name'] ?> x <?php echo $_SESSION['cart'][$row['id']]['quantity'] ?></p>
-			<?php
-			}
-	?>
-		<hr />
-		<a href="index.php?page=cart">Ga naar winkelwagen</a>
-	<?php
-	} else {
-		echo "<p>Winkelwagen is leeg</p>";
-	}
-	?>
-</div>

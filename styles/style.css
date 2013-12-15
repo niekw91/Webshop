@@ -53,22 +53,23 @@ a {
 }
 
 div#products  {
-	/*float: center;*/
-	padding-left: 135px;
+	width: 800px;
 	font-size: 150%;
+	float: right;
 }
 
 dic#side {
+	width: 100px;
 	float: left;
 	padding-right: 20px;
 	padding-top: 0px;
-	position: relative;
 }
 
 div#cart {
+	width: 200px;
+	float: right;
 	font-size: 12px;
 	padding-right: 50px;
-	overflow: hidden;
 }
 
 div.product {

@@ -31,18 +31,17 @@
 			}
 			$sql=substr($sql, 0, -1).")";
 			// Maak database controller en stuur query
-			$database = new DatabaseController();
-			$database->doSQL($sql);
+			$row = DatabaseController::executeQuery($sql);
 			$totaal=0;
-			while($row = $database->getRecord()) {
-				$subtotaal=$_SESSION['cart'][$row['id']]['quantity']*$row['price'];
+			foreach($row as $value) {
+				$subtotaal=$_SESSION['cart'][$value['id']]['quantity']*$value['price'];
 				$totaal+=$subtotaal;
 			?>
 				<tr>
-					<td><?php echo $row['name'] ?></td>
-					<td><input type="text" name="quantity[<?php echo $row['id'] ?>]" size="5" value="<?php echo $_SESSION['cart'][$row['id']]['quantity'] ?>"/></td>
-					<td><?php echo $row['price'] ?></td>
-					<td><?php echo $_SESSION['cart'][$row['id']]['quantity']*$row['price'] ?></td>
+					<td><?php echo $value['name'] ?></td>
+					<td><input type="text" name="quantity[<?php echo $value['id'] ?>]" size="5" value="<?php echo $_SESSION['cart'][$value['id']]['quantity'] ?>"/></td>
+					<td><?php echo $value['price'] ?></td>
+					<td><?php echo $_SESSION['cart'][$value['id']]['quantity']*$value['price'] ?></td>
 				</tr>
 			<?php
 			}
