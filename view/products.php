@@ -24,39 +24,32 @@
 	
 	}
 ?>
-<div id="products">
+<div id="content">
 	<h1>Producten</h1>
 	<?php
-	
 		if(isset($message)) {
 			echo $message;
 		}
 	?>
-	<table class="items">
-		<tr>
-			<th>Naam</th>
-			<th>Categorie</th>
-			<th>Prijs</th>
-		</tr>
-		
+	<ul class="products">
+
 		<?php
-		
-			$row = DatabaseController::executeQuery("SELECT id, name, category_id, price FROM product");
-			
-			foreach ($row as $value) {
-			
+		$result = DatabaseController::executeQuery("SELECT * FROM product");
+		foreach($result as $value) {
 		?>
-			<tr>
-				<td><?php echo $value['name'] ?></td>
-				<td><?php echo $value['category_id'] ?></td>
-				<td><?php echo $value['price'] ?></td>
-				<td><a href="index.php?page=products&action=add&id=<?php echo $value['id'] ?>">Add to cart</a></td>
-			</tr>
-		
-		<?php
-			} 
-		?>
-	</table>
+		<li>
+			<a href="#">
+				<img src="<?php echo $value['image_small'] ?>">
+				<h4><?php echo $value['name'] ?></h4>
+				<p>€<?php echo $value['price'] ?></p>
+			</a>
+			<br />
+			<p><a href="index.php?page=products&action=add&id=<?php echo $value['id'] ?>">In winkelwagen</a></p>
+		</li>	
+	<?php
+	}
+	?>
+	</ul>
 </div>
 	
 <div id="side">
@@ -68,17 +61,17 @@
 	
 		$row = DatabaseController::executeQuery("SELECT * FROM category WHERE parentcategory_id IS NULL");
 		foreach($row as $value) {
-			echo "<li>";
-			echo "<a href='index.php?page=products&cat=".$value['name']."'>".$value['name']."</a>";
+			echo "<li><a href='index.php?page=".$value['name']."'>".$value['name']."";
 			$subRow = DatabaseController::executeQuery("SELECT * FROM category WHERE parentcategory_id = ".$value['id']."");
 			if(!empty($subRow[0]['name'])) {
 				echo "<ul>";
-				foreach($subRow as $value) {
-					echo "<li><a href='index.php?page=products&cat=".$value['name'].">".$value['name']."</a></li>";
+				foreach($subRow as $subValue) {
+					echo "<li><a href='index.php?page=".$subValue['name']."'>".$subValue['name']."</li>";
 				}
 				echo "</ul>";
+			} else {
+				echo "</li>";
 			}
-			echo "</li>";
 		}
 		
 
