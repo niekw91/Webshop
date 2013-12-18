@@ -53,26 +53,33 @@
 </div>
 	
 <div id="side">
+	<h1>Categorieen</h1>
 	<ul>
 	<?php
 		
-	
-	
-	
 		$row = DatabaseController::executeQuery("SELECT * FROM category WHERE parentcategory_id IS NULL");
 		foreach($row as $value) {
-			echo "<li><a href='index.php?page=".$value['name']."'>".$value['name']."";
+			echo "<li><a href='index.php?page=".$value['name']."'>".$value['name']."</a>";
+		}
+		
+		
+		/*
+		$row = DatabaseController::executeQuery("SELECT * FROM category WHERE parentcategory_id IS NULL");
+		foreach($row as $value) {
+			echo "<li><a href='index.php?page=".$value['name']."'>".$value['name']."</a>";
 			$subRow = DatabaseController::executeQuery("SELECT * FROM category WHERE parentcategory_id = ".$value['id']."");
 			if(!empty($subRow[0]['name'])) {
 				echo "<ul>";
 				foreach($subRow as $subValue) {
-					echo "<li><a href='index.php?page=".$subValue['name']."'>".$subValue['name']."</li>";
+					echo "<li><a href='index.php?page=".$subValue['name']."'>".$subValue['name']."</a></li>";
 				}
 				echo "</ul>";
 			} else {
 				echo "</li>";
 			}
 		}
+		*/
+		
 		
 
 		

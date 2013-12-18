@@ -36,6 +36,11 @@
 	
 </div>
 
+<div class="headerft">
+
+
+</div>
+
 <div class="main">
 
 	<?php require("view/".$page.".php"); ?>

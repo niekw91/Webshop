@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html>
-
 <head>
 	<link href="styles/header.css" rel="stylesheet" type="text/css" />
 </head>
@@ -33,7 +30,3 @@
 	</li>
 	<li><a href="#">Ondersteuning</a></li>
 </ul>
-
-</body>
-
-</html>
