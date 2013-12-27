@@ -14,7 +14,7 @@
 			$row = DatabaseController::executeQuery($sql);
 			foreach($row as $value) {
 			?>
-				<p><?php echo $value['name'] ?> x <?php echo $_SESSION['cart'][$row['id']]['quantity'] ?></p>
+				<p><?php echo $value['name'] ?> x <?php echo $_SESSION['cart'][$value['id']]['quantity'] ?></p>
 			<?php
 			}
 	?>

@@ -21,6 +21,10 @@
 			
 			}
 		}
+	}
+	if(isset($_GET['cat'])) {
+	
+		$cat=($_GET['cat']);
 	
 	}
 ?>
@@ -34,14 +38,20 @@
 	<ul class="products">
 
 		<?php
-		$result = DatabaseController::executeQuery("SELECT * FROM product");
+		include_once("Model/products.php");
+		$productsModel = new Products;
+		if(isset($cat)) {
+			$result = $productsModel->getAllProducts($cat);
+		} else {
+			$result = $productsModel->getAllProducts();
+		}
 		foreach($result as $value) {
 		?>
 		<li>
-			<a href="#">
+			<a href="index.php?page=product&id=<?php echo $value['id'] ?>">
 				<img src="<?php echo $value['image_small'] ?>">
 				<h4><?php echo $value['name'] ?></h4>
-				<p>€<?php echo $value['price'] ?></p>
+				<p>€<?php echo $value['price'] ?>,00</p>
 			</a>
 			<br />
 			<p><a href="index.php?page=products&action=add&id=<?php echo $value['id'] ?>">In winkelwagen</a></p>
@@ -59,7 +69,12 @@
 		
 		$row = DatabaseController::executeQuery("SELECT * FROM category WHERE parentcategory_id IS NULL");
 		foreach($row as $value) {
-			echo "<li><a href='index.php?page=".$value['name']."'>".$value['name']."</a>";
+			// Selecteer 'parentcategory_id' voor hoofdcategorie
+			echo "<li><a href='index.php?page=products&cat=".$value['id']."'>".$value['name']."</a>";
+			
+			// Selecteer 'id' voor subcategorie
+			
+			// echo li
 		}
 		
 		

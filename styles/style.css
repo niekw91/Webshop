@@ -70,6 +70,10 @@ li {
 	width: 400px;
 }
 
+div#details td {
+	font-size: 9px;
+}
+
 /* Products page styling */
 
 div#content  {
@@ -114,13 +118,35 @@ div#side ul li#active {
     background: #3ea5ea;
 }
 
-/* Shopping cart styling */
+/* Side shopping cart styling */
 
 div#cart {
 	width: 200px;
 	float: right;
 	font-size: 12px;
 	padding-right: 50px;
+}
+
+/* Shopping cart page styling */
+
+div#cartpage table {
+	width: 750px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+	background-color: F3F0E9;
+	border-radius: 5px;
+	box-shadow: 1px 1px 3px #666;
+}
+
+div#cartpage td {
+	background-color: white;
+	font-weight: normal;
+	color:#333;
+}
+
+div#cartpage td {
+	background-color: #F9F9F4;
+	color : #333;
 }
 
 /* Main products content styling */
