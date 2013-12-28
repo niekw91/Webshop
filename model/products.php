@@ -7,11 +7,11 @@
 class Products {
 
 	public function __construct() {
-		include_once('Model/product.php');
+		include_once('model/product.php');
 	}
 	
 	/**
-	 * Haal een specifiek products op d.m.v. het id
+	 * Haal een specifiek product op d.m.v. het id
 	 *
 	 */
 	public function getProduct($id) {
@@ -29,14 +29,30 @@ class Products {
 				  ON p.category_id = c.id ";
 		
 		if(!is_null($categoryId)) {
-			$query .= "WHERE category_id = ?";
+			$query .= "WHERE category_id = ?
+					   OR parentcategory_id = ?";
 		}
 				  
 		if (!is_null($categoryId)) {
-            $result = DatabaseController::executeQuery($query, array($categoryId));
+            $result = DatabaseController::executeQuery($query, array($categoryId, $categoryId));
         } else {
             $result = DatabaseController::executeQuery($query);
         }
+		return $result;
+	}
+	
+	/**
+	 * Haal alle producten op met de meegegeven string als naam
+	 *
+	 */
+	public function getProductsByName($name) {
+		$like = "%".$name."%";
+	
+		$query = "SELECT *
+				  FROM product
+				  WHERE name LIKE ?";
+	
+		$result = DatabaseController::executeQuery($query, array($like));
 		return $result;
 	}
 	

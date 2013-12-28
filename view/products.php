@@ -1,7 +1,6 @@
 <?php
 
 	if(isset($_GET['action']) && $_GET['action']=="add") {
-	
 		$id=intval($_GET['id']);
 	
 		if(isset($_SESSION['cart'][$id])) {
@@ -23,9 +22,10 @@
 		}
 	}
 	if(isset($_GET['cat'])) {
-	
 		$cat=($_GET['cat']);
-	
+	}
+	if(isset($_POST['search'])) {
+		$name=($_POST['name']);
 	}
 ?>
 <div id="content">
@@ -38,12 +38,16 @@
 	<ul class="products">
 
 		<?php
-		include_once("Model/products.php");
+		include_once("model/products.php");
 		$productsModel = new Products;
-		if(isset($cat)) {
-			$result = $productsModel->getAllProducts($cat);
+		if(isset($name)) {
+			$result = $productsModel->getProductsByName($name);
 		} else {
-			$result = $productsModel->getAllProducts();
+			if(isset($cat)) {
+				$result = $productsModel->getAllProducts($cat);
+			} else {
+				$result = $productsModel->getAllProducts();
+			}
 		}
 		foreach($result as $value) {
 		?>
@@ -63,45 +67,59 @@
 </div>
 	
 <div id="side">
-	<h1>Categorieen</h1>
-	<ul>
-	<?php
-		
-		$row = DatabaseController::executeQuery("SELECT * FROM category WHERE parentcategory_id IS NULL");
-		foreach($row as $value) {
-			// Selecteer 'parentcategory_id' voor hoofdcategorie
-			echo "<li><a href='index.php?page=products&cat=".$value['id']."'>".$value['name']."</a>";
+	<div id="side_cat">
+		<h1>Categorieen</h1>
+		<ul>
+		<?php
 			
-			// Selecteer 'id' voor subcategorie
-			
-			// echo li
-		}
-		
-		
-		/*
-		$row = DatabaseController::executeQuery("SELECT * FROM category WHERE parentcategory_id IS NULL");
-		foreach($row as $value) {
-			echo "<li><a href='index.php?page=".$value['name']."'>".$value['name']."</a>";
-			$subRow = DatabaseController::executeQuery("SELECT * FROM category WHERE parentcategory_id = ".$value['id']."");
-			if(!empty($subRow[0]['name'])) {
-				echo "<ul>";
-				foreach($subRow as $subValue) {
-					echo "<li><a href='index.php?page=".$subValue['name']."'>".$subValue['name']."</a></li>";
-				}
-				echo "</ul>";
-			} else {
-				echo "</li>";
+			include_once("model/categories.php");
+			$categoriesModel = new Categories;
+			$result = $categoriesModel->getAllCategories(false);		
+			/*
+			foreach($result as $value) {
+				// Selecteer 'parentcategory_id' voor hoofdcategorie
+				echo "<li><a href='index.php?page=products&cat=".$value['id']."'>".$value['name']."</a>";
+				
+				// Selecteer 'id' voor subcategorie
+				
+				// echo li
 			}
-		}
-		*/
-		
-		
+			*/
+			
+			
+			foreach($result as $value) {
+				echo "<li class='has-sub'><a href='index.php?page=products&cat=".$value['id']."'>".$value['name']."</a>";
+				$subCat = $categoriesModel->getSubCategories($value['id']);
+				if(!empty($subCat[0]['name'])) {
+					echo "<ul>";
+					foreach($subCat as $subValue) {
+						echo "<li><a href='index.php?page=products&cat=".$subValue['id']."'>".$subValue['name']."</a></li>";
+					}
+					echo "</ul>";
+				} else {
+					echo "</li>";
+				}
+			}
+			
+			
+			
+			
 
-		
-		//while ($row = $database->getRecord()) {
-			//echo "<li><a href='index.php?page=products&cat=".$row['name']."'>".$row['name']."</li>";
-		//}	
-	?>
-	</ul>
+			
+			//while ($row = $database->getRecord()) {
+				//echo "<li><a href='index.php?page=products&cat=".$row['name']."'>".$row['name']."</li>";
+			//}	
+		?>
+		</ul>
+	</div>
+	
+	<div id="side_search">
+		<h1>Zoeken</h1>
+		<form method="POST" action="index.php?page=products" id="searchform">
+			<span><input type="text" name="name"><input type="submit" name="search" value="Zoek"></span>
+		</form>
+	</div>
 </div>
+
+
 

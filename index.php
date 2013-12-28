@@ -4,7 +4,7 @@
 	
 	if(isset($_GET['page'])) {
 		// Array met alle pagina's
-		$pages=array("home", "products", "cart");
+		$pages=array("home", "products", "product", "cart");
 		
 		if(in_array($_GET['page'], $pages)) {
 			// Pagina gevonden in array, ga naar pagina

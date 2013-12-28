@@ -4,7 +4,7 @@
 	
 		$id=intval($_GET['id']);
 		
-		include_once("Model/products.php");
+		include_once("model/products.php");
 		$productsModel = new Products;
 		$result = $productsModel->getProduct($id);
 		
