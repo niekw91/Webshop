@@ -7,7 +7,7 @@
 class Categories {
 
 	public function __construct() {
-		include_once('model/category.php');
+		include_once 'model' . DIRECTORY_SEPARATOR . 'category.php';
 	}
 	
 	/**

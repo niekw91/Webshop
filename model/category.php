@@ -21,7 +21,7 @@ class Category {
 		}
 	}
 	
-		/**
+	/**
 	 * Methodes voor het setten van de klasse variabelen
 	 * 
 	 */

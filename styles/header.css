@@ -15,6 +15,7 @@
 		width: 1020px;
 		margin-top: 0;
 		padding: 20px;
+		padding-left: 75px;
 		margin: auto auto;
 		height: 80px;
 	}
@@ -28,6 +29,7 @@
 	}
 
 	ul#navmenu a {
+		color: 4A708B;
 		text-decoration: none;
 		display: block;
 		width: 150px;
@@ -47,7 +49,7 @@
 	}
 	
 	ul#navmenu li:hover > a {
-		background-color: #CFC;
+		background-color: #B9D3EE;
 	}
 	
 	ul#navmenu ul.sub1 {
@@ -86,4 +88,26 @@
 		top: 9px;
 		right: 40px;
 		color: #ABC;
+	}
+	
+	input[type="text"] {
+		font-family: Arial, san-serif;
+		margin-top: 3px;
+		height: 22px;
+		width: 110px;
+	}
+	
+	input[type="submit"] {
+		height: 22;
+		color: #4A708B;
+		width: 65px;
+		margin-left: 5px;
+		cursor: pointer;
+		font-weight: bold;
+		line-height: 1;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		-moz-box-shadow: 0 1px 3px #999;
+		-webkit-box-shadow: 0 1px 3px #999;
+		border-bottom: 1px solid #222;
 	}

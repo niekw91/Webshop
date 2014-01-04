@@ -7,7 +7,7 @@
 class Products {
 
 	public function __construct() {
-		include_once('model/product.php');
+		include_once 'model' . DIRECTORY_SEPARATOR . 'product.php';
 	}
 	
 	/**
@@ -56,6 +56,23 @@ class Products {
 		return $result;
 	}
 	
+	/**
+	 * Haal alle producten op uit de sessie 'cart'
+	 *
+	 */
+	public function getProductsInCart() {
+		if(isset($_SESSION['cart'])) {
+			// Maak sql string met product id's die in de session cart zitten
+			$query = "SELECT * FROM product WHERE id IN (";
+			foreach($_SESSION['cart'] as $id => $value) {
+				$query .= $id.",";
+			}
+			$query = substr($query, 0, -1).")";
+
+			$result = DatabaseController::executeQuery($query);
+			return $result;
+		}	
+	}
 
 }
 
