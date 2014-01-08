@@ -10,6 +10,7 @@
 </head>
 
 <body>
+
 <div class="header">
 	
 	<?php require 'view' . DIRECTORY_SEPARATOR . 'header.php'; ?>
@@ -28,7 +29,6 @@
 </div>
 
 <div class="footer">
-
 
 </div>
 

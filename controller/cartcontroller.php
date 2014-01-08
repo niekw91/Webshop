@@ -31,8 +31,15 @@ class CartController {
 					unset($_SESSION['cart'][$key]);
 				}
 			}
+			if(isset($_POST['order'])) {
+				header("Location: index.php?page=order");
+				exit();
+			}
 			
 			$products = $this->productsModel->getProductsInCart();
+			if(empty($products)) {
+				unset($_SESSION['cart']);
+			}
 			$total = 0;
 		}
 		

@@ -90,18 +90,22 @@
 		color: #ABC;
 	}
 	
-	input[type="text"] {
+	ul#navmenu input[type="text"] {
+		float:left;
 		font-family: Arial, san-serif;
 		margin-top: 3px;
 		height: 22px;
-		width: 110px;
+		width: 200px;
+		border-style: ridge;
 	}
 	
-	input[type="submit"] {
-		height: 22;
+	ul#navmenu input[type="submit"] {
+		float: right;
+		position: relative;
+		margin: auto auto;
+		height: 22px;
 		color: #4A708B;
 		width: 65px;
-		margin-left: 5px;
 		cursor: pointer;
 		font-weight: bold;
 		line-height: 1;

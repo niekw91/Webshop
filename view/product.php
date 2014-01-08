@@ -9,12 +9,17 @@
 			<tr>
 				<td><img src=<?php echo $largeImage ?>></td>
 				<td>
-					<?php echo $longDescription ?>
+					<h2>Beschrijving</h2><br />
+					<?php echo $longDescription ?><br />
+					<br />
+					<p>Prijs: €<?php echo $price ?>,00 incl. BTW</p>
+					<br />
+					<button type="submit" name="submit">Plaats in winkelwagen</button>
 				</td>	
 			</tr>
 			<tr>
 				<td><?php echo $shortDescription ?></td>
-				<td><button type="submit" name="submit">Plaats in winkelwagen</button></td>	
+				<td></td>	
 			</tr>
 		</table>
 	</form>

@@ -62,14 +62,19 @@ class Products {
 	 */
 	public function getProductsInCart() {
 		if(isset($_SESSION['cart'])) {
+			$hasItems = false;
 			// Maak sql string met product id's die in de session cart zitten
 			$query = "SELECT * FROM product WHERE id IN (";
 			foreach($_SESSION['cart'] as $id => $value) {
 				$query .= $id.",";
+				$hasItems = true;
 			}
 			$query = substr($query, 0, -1).")";
-
-			$result = DatabaseController::executeQuery($query);
+			if($hasItems) {
+				$result = DatabaseController::executeQuery($query);
+			} else {
+				$result = null;
+			}
 			return $result;
 		}	
 	}

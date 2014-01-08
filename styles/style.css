@@ -3,6 +3,7 @@ html, body {
 	margin-left: auto;
 	margin-right: auto;
 	background-color: #F4F4F4;
+	height: 100%;
 }
 
 h1 {
@@ -47,13 +48,15 @@ li {
 .main {
     position: relative;
     width: 1020px;
-    min-height: 600px;
+    /*min-height: 600px;*/
+	min-height: 100%;
     margin: auto auto;
     margin-top: 0;
     padding:10px;
 	background-color: white;
 	z-index: 1;
 	overflow: hidden;
+	padding-bottom: 25px;   /* Height of the footer element */
 }
 
 .footer {
@@ -66,6 +69,8 @@ li {
     height: 25px;
     background-color: #4A708B;
     border-bottom: #008080;
+	bottom: 0;
+	left: 0;
 }
 
 .form {
@@ -77,12 +82,40 @@ li {
 
 div#details td {
 	font-size: 11px;
+	vertical-align: top;
+	padding-top: 10px;
+}
+
+div#details p {
+	font-size: 15px;
+	color: #4A708B;
+}
+
+div#details h2 {
+	font-size: 13px;
+	color: #4A708B;
+	margin-top: 15px;
+}
+
+div#details button {
+	height: 22px;
+	color: #4A708B;
+	width: 165px;
+	margin-top: 10px;
+	cursor: pointer;
+	font-weight: bold;
+	line-height: 1;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px #999;
+	-webkit-box-shadow: 0 1px 3px #999;
+	border-bottom: 1px solid #FFF;
 }
 
 /* Products page styling */
 
 div#content  {
-	width: 800px;
+	width: 770px;
 	font-size: 150%;
 	float: right;
 }
@@ -100,7 +133,7 @@ div#side_cat > ul {
 div#side_cat > ul {
 	display: block;
 	position: relative;
-	width: 200px;
+	width: 230px;
 }
 
 div#side_cat > ul li {
@@ -213,6 +246,27 @@ div#side_search  {
 	margin: 3px; 
 }
 
+div#side_search input[type="text"] {
+	font-family: Arial, san-serif;
+	margin-top: 3px;
+	height: 22px;
+}
+
+div#side_search input[type="submit"] {
+	height: 22px;
+	color: #4A708B;
+	width: 65px;
+	margin-left: 5px;
+	cursor: pointer;
+	font-weight: bold;
+	line-height: 1;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px #999;
+	-webkit-box-shadow: 0 1px 3px #999;
+	border-bottom: 1px solid #222;
+}
+
 /* Side shopping cart styling */
 
 div#cart {
@@ -234,6 +288,7 @@ div#cartpage table {
 }
 
 div#cartpage td {
+	height: 35px;
 	background-color: white;
 	font-weight: normal;
 	color:#333;
@@ -242,6 +297,30 @@ div#cartpage td {
 div#cartpage td {
 	background-color: #F9F9F4;
 	color : #333;
+}
+
+div#cartpage button {
+	height: 22px;
+	color: #4A708B;
+	padding-left: 4px;
+	padding-right: 4px;
+	margin-left: 5px;
+	cursor: pointer;
+	font-weight: bold;
+	line-height: 1;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px #999;
+	-webkit-box-shadow: 0 1px 3px #999;
+	border-bottom: 1px solid #222;
+}
+
+div#cartpage input[type="text"] {
+	font-family: Arial, san-serif;
+	width: 25px;
+	border-color: $F9F9F4;
+	background-color: #F9F9F4;
+	border-style: ridge;
 }
 
 /* Order page styling */
@@ -278,6 +357,8 @@ ul.products li {
     width: 200px;
     display: inline-block;
 	padding-top: 10px;
+	padding-right: 15px;
+	padding-left: 15px;
 	vertical-align: top;
 	text-align: center;
 }

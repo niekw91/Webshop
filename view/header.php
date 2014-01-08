@@ -29,16 +29,5 @@
 		}
 	?>
 	</ul>
-	<li><a href="#">Deals</a><span class="darrow">&#9660;</span>
-		<ul class="sub1">
-			<li><a href="#">Uitverkoop</a></li>
-			<li><a href="#">Dagaanbieding</a></li>
-		</ul>
-	</li>
 	<li><a href="index.php?page=cart">Winkelwagen</a></li>
-	<li>
-		<form method="POST" action="index.php?page=products" id="searchform">
-			<input type="text" name="name"><input type="submit" name="search" value="Zoeken">
-		</form>
-	</li>
 </ul>

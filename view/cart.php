@@ -36,13 +36,8 @@
 					</tr>
 			</table>
 			<br />
-			<button type="submit" name="submit">Update</button>
+			<button type="submit" name="submit">Update</button><button type="submit" name="order">Bestelling plaatsen</button>
 		</form>
-	</div>
-
-	<div id="order">
-		<br />
-		<a href="index.php?page=order">Bestelling plaatsen</a>
 	</div>
 <?php
 	} else {

@@ -3,20 +3,7 @@
 	<?php 
 	
 	if(isset($_SESSION['cart'])) {
-			/*
-			// Maak sql string met product id's die in de session cart zitten
-			$sql="SELECT id, name FROM product WHERE id IN (";
-			foreach($_SESSION['cart'] as $id => $value) {
-				$sql.=$id.",";
-			}
-			$sql=substr($sql, 0, -1).")";
-			// Maak database controller en stuur query
-			$row = DatabaseController::executeQuery($sql);
-			*/
-			include_once 'model' . DIRECTORY_SEPARATOR . 'products.php';
-			$productsModel = new Products();
-			$row = $productsModel->getProductsInCart();
-			foreach($row as $value) {
+			foreach($products as $value) {
 			?>
 				<p><?php echo $value['name'] ?> x <?php echo $_SESSION['cart'][$value['id']]['quantity'] ?></p>
 			<?php
@@ -30,3 +17,5 @@
 	}
 	?>
 </div>
+
+<h1>Welkom</h2>
