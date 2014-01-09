@@ -29,7 +29,7 @@
 	}
 
 	ul#navmenu a {
-		color: 4A708B;
+		color: #070b0d;
 		text-decoration: none;
 		display: block;
 		width: 150px;
@@ -38,6 +38,10 @@
 		background-color: #FFF;
 		border: 1px solid #CCC;
 		border-radius: 5px;
+	}
+
+	ul#navmenu h1 {
+		font-size:250%
 	}
 	
 	ul#navmenu .sub1 a {

@@ -5,7 +5,8 @@
 <body>
 
 <ul id="navmenu">
-	<li><a href="index.php?page=home">Home</a></li>
+	<li><h1>WEBSHOP</h1></li>
+	<!-- <li><a href="index.php?page=home">Home</a></li> -->
 	<li><a href="index.php?page=products">Producten</a><span class="darrow">&#9660;</span>
 	
 	<ul class='sub1'>

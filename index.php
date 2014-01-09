@@ -13,11 +13,11 @@ if(isset($_GET['page'])) {
 		$page=$_GET['page'];
 	} else {
 		// Pagina niet in array, zet $page naar default
-		$page="home";
+		$page="products";
 	}
 } else {
 	// Geen pagina variabele gevonden, zet $page naar default
-	$page="home";
+	$page="products";
 }
 
 foreach ($pages as $arrayPage) {
