@@ -33,7 +33,7 @@
 	<p>
 		<br />Bedankt voor uw bestelling met de totaalwaarde van: €<?php echo $total ?>,00
 		<br /><br />
-		Terug naar <a href="index.php?page=home">home</a>
+		Terug naar <a href="index.php?page=products">producten</a>
 	</p>
 	
 	<?php

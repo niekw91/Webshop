@@ -2,10 +2,10 @@
 
 
 session_start();
-require("controller/DatabaseController.php");
+require("controller/databasecontroller.php");
 
 // Array met alle pagina's
-$pages=array("home", "products", "product", "cart", "order");
+$pages=array("products", "product", "cart", "order");
 	
 if(isset($_GET['page'])) {	
 	if(in_array($_GET['page'], $pages)) {

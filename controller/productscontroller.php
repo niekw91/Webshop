@@ -61,7 +61,8 @@ class ProductsController {
 			}
 		}
 
-		$categories = $this->categoriesModel->getAllCategories(false);	
+		$categories = $this->categoriesModel->getAllCategories(false);
+		$categoriesModel = new Categories();
 	
         $page = 'products.php';
 		include 'view' . DIRECTORY_SEPARATOR . 'template.php';

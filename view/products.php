@@ -32,6 +32,7 @@
 		<?php			
 			foreach($categories as $value) {
 				echo "<li class='has-sub'><a href='index.php?page=products&cat=".$value['id']."'>".$value['name']."</a>";
+
 				$subCat = $categoriesModel->getSubCategories($value['id']);
 				if(!empty($subCat[0]['name'])) {
 					echo "<ul>";
